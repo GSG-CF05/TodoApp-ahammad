@@ -1,7 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&display=swap");
+:root {
+  --body-color: #d9afd9;
+  --card-bg: #f0f2fa;
+  --heading-color: rgb(210, 105, 30);
+  --text-color: #2f3033;
+  --change-icon: rgba(66, 3, 3, 0.9);
+}
+
+.dark {
+  --body-color: #333233;
+  --card-bg: #f0f2fa;
+  --heading-color: rgb(238, 193, 161);
+  --text-color: #b6b9c0;
+  --change-icon: rgba(243, 200, 200, 0.9);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Fredoka", sans-serif;
 }
 
 body {
@@ -9,8 +27,8 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   /* background: #fafafa; */
-  background-color: #d9afd9;
-  /* background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%); */
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 .changeTheme {
   display: flex;
@@ -22,14 +40,14 @@ body {
 .changeTheme i {
   font-size: 1.5rem;
   margin-right: 1rem;
-  color: rgba(66, 3, 3, 0.9);
+  color: var(--change-icon);
 }
 
 header {
   margin-top: 3rem;
   padding-bottom: 1.8rem;
   font-size: 2rem;
-  color: chocolate;
+  color: var(--heading-color);
 }
 
 /* .container {
@@ -50,6 +68,7 @@ header {
   padding: 1.5rem;
 }
 .addTasks form input {
+  font-size: 1.3rem;
   padding: 0.5rem;
   width: 85%;
   border: 1px solid #ccc;
