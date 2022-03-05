@@ -4,7 +4,8 @@ let listElement=document.querySelector('.tasks');
 let doneActionElement=document.querySelector('.done')
 let themeElement=document.querySelector('.theme')
 
-
+let isEditTask=false
+let updateItem
 
 themeElement.addEventListener('click',toggleTheme)
 
@@ -73,7 +74,7 @@ addButton.addEventListener("click", addTask);
 
 function addTask() {
     let task = inputText.value;
-    if (task.trim()!==""){
+    if (task.trim()!=="" && !isEditTask){
     tasks.push(task);
     let index=tasks.length
     //console.log(index)
@@ -85,7 +86,17 @@ function addTask() {
     addItemToList(task,index)
    
     }
+    if (task.trim()!=="" && isEditTask)
+    
+    {
+        tasks[updateItem]=inputText.value
+        localStorage.setItem("task", JSON.stringify(tasks));
+        inputText.value = "";
+        console.log(task)
+        getTodoListOnLoad()
 
+    }
+    
     
 }
 
@@ -102,7 +113,7 @@ function addItemToList(task,index)
 
     actions.classList.add("actions");
     actions.setAttribute("index",index)
-    actions.innerHTML=`<i class="fas fa-edit"></i> <i onClick=deleteTask(${index}) class="fas fa-trash-alt"></i>`
+    actions.innerHTML=`<i onClick=editTodoTask(${index}) class="fas fa-edit"></i> <i onClick=deleteTask(${index}) class="fas fa-trash-alt"></i>`
     taskItem.appendChild(actions);
     //console.log(actions);
 
@@ -127,4 +138,13 @@ function deleteTask(index)
     localStorage.setItem('task',JSON.stringify(newArr))
     getTodoListOnLoad()
 
+}
+
+function editTodoTask(index)
+{
+    isEditTask=true
+    inputText.value=tasks[index]
+    updateItem=index
+
+    console.log(index)
 }
