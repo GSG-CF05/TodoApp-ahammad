@@ -120,6 +120,12 @@ header {
   padding-left: 0.2rem;
 }
 
+.done {
+  text-decoration: line-through;
+  /* color: #ccc; */
+  font-size: 0.8rem;
+}
+
 @media screen and (min-width: 600px) {
   .changeTheme {
     width: 70%;
